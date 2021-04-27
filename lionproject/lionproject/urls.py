@@ -21,5 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', card.views.home, name = 'home'),
     path('calculator/', include('calculator.urls')),
+<<<<<<< HEAD
     path('blog/', include('blog.urls')),
+=======
+    path('wordcount/', include('wordcount.urls')),
+>>>>>>> c45bc2fec3c3db9f5d0f93adb22be33dafd3b9eb
 ]

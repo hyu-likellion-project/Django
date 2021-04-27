@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'card.apps.CardConfig',
     'calculator.apps.CalculatorConfig',
     'blog.apps.BlogConfig',
+    'wordcount.apps.WordcountConfig',
 ]
 
 MIDDLEWARE = [
