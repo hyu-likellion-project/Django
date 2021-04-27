@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'card.apps.CardConfig',
     'calculator.apps.CalculatorConfig',
+    'blog.apps.BlogConfig',
     'wordcount.apps.WordcountConfig',
 ]
 
