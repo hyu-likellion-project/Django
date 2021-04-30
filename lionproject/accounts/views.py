@@ -18,8 +18,6 @@ def signup(request):
                     print(e)
                 except User.DoesNotExist:
                     new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'] )
-                    new_user.last_name = form.cleaned_data['last_name']
-                    new_user.last_name = form.cleaned_data['first_name']
                     new_user.save()
                     auth.login(request, new_user)
                     return redirect('blog:home')
@@ -49,5 +47,9 @@ def login(request):
     else:
         form = LoginForm(request.POST)
         return render(request, 'accounts/login.html', {'form':form})
+
+def logout(request):
+    auth.logout(request)
+    return redirect('blog:home')
 
 
