@@ -23,4 +23,5 @@ urlpatterns = [
     path('calculator/', include('calculator.urls')),
     path('blog/', include('blog.urls')),
     path('wordcount/', include('wordcount.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

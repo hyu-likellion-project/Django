@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'calculator.apps.CalculatorConfig',
     'blog.apps.BlogConfig',
     'wordcount.apps.WordcountConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
