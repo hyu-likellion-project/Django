@@ -7,20 +7,12 @@ from django.contrib import auth
 def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
-        if form.is_valid():
-            if form.cleaned_data['password'] == form.cleaned_data['password_confirm']:
-                try:
-                    print(form.cleaned_data['username'])
-                    #여기서 동작을 안하고 except로 넘어간다
-                    user = User.objects.get(username=form.cleaned_data['username'])
-                    return render(request, 'accounts/signup.html', {'error': '이미 존재하는 아이디입니다.'})
-                except ZeroDivisionError as e:
-                    print(e)
-                except User.DoesNotExist:
-                    new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'] )
-                    new_user.save()
-                    auth.login(request, new_user)
-                    return redirect('blog:home')
+        if form.is_valid(): #이미 존재하는 아이디를 입력했을 경우 오류 메세지를 보냄
+            if form.cleaned_data['password'] == form.cleaned_data['password_confirm']:    
+                new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'] )
+                new_user.save()
+                auth.login(request, new_user)
+                return redirect('blog:home')
             else:
                 return render(request, 'accounts/signup.html', {'error': '비밀번호와 비밀번호 확인이 다릅니다', 'form':form})
         else:
